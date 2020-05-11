@@ -1,0 +1,20 @@
+{
+  "name": "@quiver/starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/deltaepsilon/starter.git",
+  "author": "Chris Esplin <chris@christopheresplin.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "docker-compose build",
+    "dev": "docker-compose build workspace && docker-compose run --service-ports --rm workspace zsh",
+    "connect": "docker exec -it workspace-starter zsh",
+    "ci:login": "npx firebase login:ci --no-localhost",
+    "ci:build": "docker build --tag=starter .",
+    "ci:interactive": "docker run -it --rm starter sh",
+    "ci:pull": "docker pull us.gcr.io/quiver-starter/starter:latest",
+    "ci:latest": "docker run -it --rm us.gcr.io/quiver-starter/starter:latest sh",
+    "windows:watch": "powershell ./bin/watch.ps1"
+  }
+}
